@@ -1,0 +1,5 @@
+host=ip_Db2
+port=port_Db2
+database=CRYPTOTX
+user=user_Db2_encrypted_with_CipherTool
+pass=password_encrypted_with_CipherTool

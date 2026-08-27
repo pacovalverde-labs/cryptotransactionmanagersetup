@@ -1,0 +1,24 @@
+
+SET CURRENT SCHEMA CRYPTO;
+
+-- ============================================================
+-- MOVEMENT_WEB_DATA
+-- ============================================================
+
+CREATE TABLE MOVEMENT_WEB_DATA (
+    ID BIGINT
+        GENERATED ALWAYS AS IDENTITY
+        PRIMARY KEY,
+
+    MOVEMENT_ID BIGINT,
+    HTTP_STATUS INTEGER,
+    FETCH_STATUS VARCHAR(30),
+    CONTENT_TYPE VARCHAR(150),
+    HTML_CONTENT CLOB,
+    FETCHED_AT TIMESTAMP,
+    ERROR_MESSAGE VARCHAR(2000),
+
+    CONSTRAINT FK_MOVEMENT_WEB_DATA_MOVEMENT
+        FOREIGN KEY (MOVEMENT_ID)
+        REFERENCES MOVEMENT (ID)
+);
