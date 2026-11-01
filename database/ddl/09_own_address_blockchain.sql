@@ -1,0 +1,27 @@
+-- ============================================================
+-- Crypto Transaction Manager
+-- IBM DB2
+-- Schema: CRYPTO
+-- ============================================================
+
+SET CURRENT SCHEMA CRYPTO;
+
+CREATE TABLE CRYPTO.OWN_ADDRESS_BLOCKCHAIN (
+    ID BIGINT
+        GENERATED ALWAYS AS IDENTITY
+        PRIMARY KEY,
+
+    OWN_ADDRESS_ID BIGINT NOT NULL,
+    BLOCKCHAIN_ID BIGINT NOT NULL,
+
+    CONSTRAINT FK_OAB_ADDRESS
+        FOREIGN KEY (OWN_ADDRESS_ID)
+        REFERENCES CRYPTO.OWN_ADDRESS (ID),
+
+    CONSTRAINT FK_OAB_BLOCKCHAIN
+        FOREIGN KEY (BLOCKCHAIN_ID)
+        REFERENCES CRYPTO.BLOCKCHAIN (ID),
+
+    CONSTRAINT UQ_OAB_ADDRESS_BLOCKCHAIN
+        UNIQUE (OWN_ADDRESS_ID, BLOCKCHAIN_ID)
+);
